@@ -5,13 +5,12 @@ xcb-based background setter for x
 $ clang xbgs.c -o xbgs -Ilib/ -lxcb -lm
 
 # modes
---bg-scale
-
---bg-fill
-
---bg-center
-
---bg-zoom
+```
+  --bg-scale    image fits appropriately to the screen size
+  --bg-fill     adjusts the picture to full view by cropping the screen
+  --bg-center   centers the image in the center of the screen
+  --bg-zoom     enlarges if the image is small
+```
 
 # usage
 $ ./xbgs --bg-scale ~/image.jpeg
