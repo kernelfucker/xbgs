@@ -1,3 +1,5 @@
+/* See LICENSE file for license details */
+/* xbgs - xcb-based background setter for x */
 #define STB_IMAGE_IMPLEMENTATION
 #include <stdio.h>
 #include <stdlib.h>
@@ -5,6 +7,7 @@
 #include <math.h>
 #include <xcb/xcb.h>
 #include <xcb/xcb_atom.h>
+#include <xcb/randr.h>
 #include "lib/stb_image.h"
 
 typedef enum{
@@ -29,6 +32,7 @@ void phelp(){
 	puts("  --bg-fill     adjusts the picture to full view by cropping the screen");
 	puts("  --bg-center   centers the image in the center of the screen");
 	puts("  --bg-zoom     enlarges if the image is small");
+	puts("  --version     show version information");
 	puts("  --help        display this");
 	puts("examples:");
 	puts("  xbgs --bg-scale image.png");
@@ -48,8 +52,13 @@ int main(int argc, char *argv[]){
 		return 0;
 	}
 
+	if(strcmp(argv[1], "--version") == 0){
+		printf("0.2\n");
+		return 0;
+	}
+
 	if(argc < 3){
-		fprintf(stderr, "there is no such argument type --help\n");
+		fprintf(stderr, "there is no such argument, type --help\n");
 		return 1;
 	}
 
