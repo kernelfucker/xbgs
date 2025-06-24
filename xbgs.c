@@ -10,6 +10,8 @@
 #include <xcb/randr.h>
 #include "lib/stb_image.h"
 
+#define version "0.2"
+
 typedef enum{
 	mode_scale,
 	mode_fill,
@@ -53,7 +55,7 @@ int main(int argc, char *argv[]){
 	}
 
 	if(strcmp(argv[1], "--version") == 0){
-		printf("0.2\n");
+		printf("%s\n", version);
 		return 0;
 	}
 
