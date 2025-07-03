@@ -19,4 +19,4 @@ $ clang xbgs.c -o xbgs -Os -s -Ilib/ -lxcb -lm
 $ ./xbgs -s ~/images/image.jpeg
 
 # example image
-![image](https://github.com/user-attachments/assets/719a51a4-6c3f-4f00-8cfb-22c1a26d19d6)
+![image](https://github.com/user-attachments/assets/56591b44-5910-40b8-894b-5f92a06dc5a0)
