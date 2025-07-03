@@ -10,7 +10,7 @@
 #include <xcb/randr.h>
 #include "lib/stb_image.h"
 
-#define version "0.2"
+#define version "0.3"
 
 typedef enum{
 	mode_scale,
@@ -20,24 +20,23 @@ typedef enum{
 } bgmt;
 
 bgmt pm(const char *arg){
-	if(strcmp(arg, "--bg-scale") == 0) return mode_scale;
-	if(strcmp(arg, "--bg-fill") == 0) return mode_fill;
-	if(strcmp(arg, "--bg-center") == 0) return mode_center;
-	if(strcmp(arg, "--bg-zoom") == 0) return mode_zoom;
+	if(strcmp(arg, "-s") == 0) return mode_scale;
+	if(strcmp(arg, "-f") == 0) return mode_fill;
+	if(strcmp(arg, "-c") == 0) return mode_center;
+	if(strcmp(arg, "-z") == 0) return mode_zoom;
 	return mode_scale;
 }
 
 void phelp(){
-	puts("usage: xbgs [mode] [image]");
+	puts("usage: xbgs [mode] [file]");
 	puts("modes:");
-	puts("  --bg-scale    image fits appropriately to the screen size");
-	puts("  --bg-fill     adjusts the picture to full view by cropping the screen");
-	puts("  --bg-center   centers the image in the center of the screen");
-	puts("  --bg-zoom     enlarges if the image is small");
-	puts("  --version     show version information");
-	puts("  --help        display this");
-	puts("examples:");
-	puts("  xbgs --bg-scale image.png");
+	puts("  -s	image fits appropriately to the screen size");
+	puts("  -f	adjusts the picture to full view by cropping the screen");
+	puts("  -c	centers the image in the center of the screen");
+	puts("  -z	enlarges if the image is small");
+	puts("options:");
+	puts("  -v	show version information");
+	puts("  -h	display this");
 }
 
 xcb_atom_t get_atom(xcb_connection_t *conn, const char *name){
@@ -49,18 +48,18 @@ xcb_atom_t get_atom(xcb_connection_t *conn, const char *name){
 }
 
 int main(int argc, char *argv[]){
-	if(argc < 2 || strcmp(argv[1], "--help") == 0){
+	if(argc < 2 || strcmp(argv[1], "-h") == 0){
 		phelp();
 		return 0;
 	}
 
-	if(strcmp(argv[1], "--version") == 0){
+	if(strcmp(argv[1], "-v") == 0){
 		printf("%s\n", version);
 		return 0;
 	}
 
 	if(argc < 3){
-		fprintf(stderr, "there is no such argument, type --help\n");
+		fprintf(stderr, "there is no such argument, type -h\n");
 		return 1;
 	}
 
