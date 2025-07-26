@@ -14,6 +14,7 @@ $ clang xbgs.c -o xbgs -Os -s -Ilib/ -lxcb -lm
 
 # usage
 $ ./xbgs -s ~/image.jpeg
+$ ./xbgs -c ~/image.png
 
 # example image
 ![image](https://github.com/user-attachments/assets/56591b44-5910-40b8-894b-5f92a06dc5a0)
