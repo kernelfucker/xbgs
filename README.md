@@ -2,7 +2,7 @@
 xcb-based background setter for x
 
 # compile
-$ clang xbgs.c -o xbgs -Os -s -Ilib/ -lxcb -lm
+$ clang xbgs.c -o xbgs -Wall -Werror -Os -s -Ilib/ -lxcb -lm
 
 # modes
 ```
